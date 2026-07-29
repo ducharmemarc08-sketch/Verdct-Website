@@ -153,6 +153,16 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;background:rgba(255,255,255,
 .t-meta span{font-size:11.5px;color:var(--mut)}
 @media(max-width:600px){.proof-card{width:260px}}
 
+/* TEAM */
+.team-section{padding:100px 6vw;background:var(--off)}
+.team-header{text-align:center;max-width:480px;margin:0 auto 48px}
+.team-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;max-width:900px;margin:0 auto}
+.team-card{background:#fff;border:1px solid var(--bdr);border-radius:18px;padding:32px 24px;text-align:center}
+.team-avatar{width:76px;height:76px;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:600;font-size:24px;font-family:'Playfair Display',serif;margin:0 auto 18px}
+.team-name{font-size:16px;font-weight:600;color:var(--blk);margin-bottom:4px}
+.team-role{font-size:12.5px;color:var(--g);font-weight:600;text-transform:uppercase;letter-spacing:0.8px}
+@media(max-width:700px){.team-grid{grid-template-columns:1fr;max-width:340px}}
+
 /* CTA */
 .cta-section{padding:120px 6vw;background:var(--off);text-align:center;position:relative;overflow:hidden}
 .cta-bg{position:absolute;inset:0;background:radial-gradient(ellipse 80% 80% at 50% 50%,rgba(45,122,79,0.08) 0%,transparent 70%);pointer-events:none}
@@ -479,6 +489,31 @@ footer{border-top:1px solid var(--bdr);padding:36px 6vw;display:flex;align-items
   {"initials":"GP","color":"#2D7A4F","name":"Grace P.","role":"Early access","city":"Toronto, ON","quote":"The AI analyst reports read like a friend explaining it, not a research note."}
 ]
 </script>
+
+<!-- TEAM -->
+<section class="team-section reveal">
+  <div class="team-header">
+    <span class="sec-label">Who's Behind It</span>
+    <h2 class="sec-h">Built by a small team.</h2>
+  </div>
+  <div class="team-grid">
+    <div class="team-card">
+      <div class="team-avatar" style="background:#2D7A4F">DT</div>
+      <div class="team-name">Darby Tipton</div>
+      <div class="team-role">Founder</div>
+    </div>
+    <div class="team-card">
+      <div class="team-avatar" style="background:#3b6e91">MD</div>
+      <div class="team-name">Marc Ducharme</div>
+      <div class="team-role">Co-Founder</div>
+    </div>
+    <div class="team-card">
+      <div class="team-avatar" style="background:#a8763e">SO</div>
+      <div class="team-name">Sean Onuoha</div>
+      <div class="team-role">Co-Founder</div>
+    </div>
+  </div>
+</section>
 
 <!-- CTA -->
 <section class="cta-section" id="download">
