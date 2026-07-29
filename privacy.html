@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Privacy Policy: Verdct</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --g:#2D7A4F;
+  --g2:#235f3e;
+  --gp:#e8f5ee;
+  --blk:#0c0c0c;
+  --off:#f6f8f6;
+  --mut:#5a6b60;
+  --bdr:#d4e4da;
+}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',sans-serif;background:#fff;color:var(--blk)}
+
+nav{position:sticky;top:0;left:0;right:0;z-index:200;background:rgba(255,255,255,0.94);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-bottom:1px solid var(--bdr);padding:0 6vw;display:flex;align-items:center;justify-content:space-between;height:60px}
+.logo{font-family:'Playfair Display',serif;font-size:22px;font-weight:600;color:var(--blk);text-decoration:none;letter-spacing:-0.4px}
+.logo span{color:var(--g)}
+.nav-back{font-size:14px;color:var(--mut);text-decoration:none;transition:color 0.2s}
+.nav-back:hover{color:var(--g)}
+
+.doc{max-width:760px;margin:0 auto;padding:64px 6vw 100px}
+.doc-eyebrow{font-size:11px;font-weight:600;letter-spacing:2.5px;text-transform:uppercase;color:var(--g);margin-bottom:14px;display:block}
+.doc h1{font-family:'Playfair Display',serif;font-size:clamp(32px,5vw,48px);font-weight:600;letter-spacing:-1px;margin-bottom:10px}
+.doc-tagline{font-family:'Playfair Display',serif;font-style:italic;color:var(--mut);font-size:17px;margin-bottom:28px}
+.meta-box{background:var(--off);border:1px solid var(--bdr);border-radius:14px;padding:18px 22px;margin-bottom:28px;display:flex;flex-wrap:wrap;gap:24px}
+.meta-item{font-size:13px}
+.meta-item strong{display:block;color:var(--mut);font-weight:600;font-size:11px;text-transform:uppercase;letter-spacing:1px;margin-bottom:3px}
+.intro-p{font-size:16px;color:var(--mut);line-height:1.7;margin-bottom:24px}
+.important-box{background:var(--gp);border:1px solid #c8e8d4;border-radius:14px;padding:18px 22px;font-size:14px;line-height:1.65;margin-bottom:48px}
+.important-box strong{color:var(--g)}
+
+.glance-title{font-family:'Playfair Display',serif;font-size:22px;font-weight:600;margin-bottom:18px}
+.glance{border:1px solid var(--bdr);border-radius:14px;overflow:hidden;margin-bottom:20px}
+.glance-row{display:grid;grid-template-columns:160px 1fr;gap:20px;padding:14px 20px;font-size:14px;line-height:1.6}
+.glance-row:nth-child(odd){background:var(--off)}
+.glance-row strong{color:var(--g);font-weight:600}
+@media(max-width:600px){.glance-row{grid-template-columns:1fr;gap:4px}}
+
+.toc{border:1px solid var(--bdr);border-radius:14px;padding:22px 26px;margin-bottom:56px}
+.toc-title{font-size:12px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:var(--mut);margin-bottom:14px}
+.toc ol{list-style:none;columns:2;gap:0 24px}
+@media(max-width:600px){.toc ol{columns:1}}
+.toc li{margin-bottom:9px;break-inside:avoid}
+.toc a{font-size:14px;color:var(--blk);text-decoration:none}
+.toc a:hover{color:var(--g)}
+
+.sec{margin-bottom:40px;scroll-margin-top:80px}
+.sec h2{font-family:'Playfair Display',serif;font-size:24px;font-weight:600;color:var(--g);margin-bottom:14px;letter-spacing:-0.3px}
+.sec h3{font-size:16px;font-weight:600;margin:20px 0 8px}
+.sec p{font-size:15.5px;color:#26332c;line-height:1.75;margin-bottom:14px}
+.sec ul{margin:0 0 14px 20px}
+.sec li{font-size:15.5px;color:#26332c;line-height:1.75;margin-bottom:6px}
+.callout{background:var(--gp);border:1px solid #c8e8d4;border-radius:12px;padding:16px 20px;font-size:14.5px;line-height:1.65;margin-bottom:16px}
+.callout strong{color:var(--g)}
+.contact-table{border:1px solid var(--bdr);border-radius:12px;overflow:hidden;margin:16px 0}
+.contact-row{display:grid;grid-template-columns:160px 1fr;padding:12px 18px;font-size:14px}
+.contact-row:nth-child(odd){background:var(--off)}
+.contact-row strong{font-weight:600}
+.res-list a{display:block;font-size:14px;color:var(--g);text-decoration:none;margin-bottom:8px}
+.res-list a:hover{text-decoration:underline}
+
+footer{border-top:1px solid var(--bdr);padding:36px 6vw;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px;background:#fff}
+.footer-logo{font-family:'Playfair Display',serif;font-size:18px;font-weight:600;color:var(--blk);text-decoration:none}
+.footer-logo span{color:var(--g)}
+.footer-links{display:flex;gap:24px}
+.footer-links a{font-size:13px;color:var(--mut);text-decoration:none;transition:color 0.2s}
+.footer-links a:hover{color:var(--g)}
+.footer-copy{font-size:12px;color:var(--mut)}
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="logo" href="index.html">Verd<span>ct</span></a>
+  <a class="nav-back" href="index.html">Back to Verdct.org</a>
+</nav>
+
+<div class="doc">
+  <span class="doc-eyebrow">Legal</span>
+  <h1>Privacy Policy</h1>
+  <p class="doc-tagline">Investing, simplified. Privacy, respected.</p>
+
+  <div class="meta-box">
+    <div class="meta-item"><strong>Website</strong>Verdct.org</div>
+    <div class="meta-item"><strong>Effective date</strong>July 23, 2026</div>
+    <div class="meta-item"><strong>Version</strong>1.0</div>
+  </div>
+
+  <p class="intro-p">This policy explains how Verdct collects, uses, shares, protects and retains personal information when you use Verdct.org, the Verdct mobile application and related services.</p>
+
+  <div class="important-box"><strong>IMPORTANT:</strong> Verdct provides investment-information and educational technology. Verdct does not provide financial, investment, legal, accounting or tax advice and is not a broker, dealer, custodian, portfolio manager or fiduciary.</div>
+
+  <h2 class="glance-title">Privacy at a Glance</h2>
+  <div class="glance">
+    <div class="glance-row"><strong>What Verdct does</strong><span>Helps users organize and understand investment information through portfolio tools, market information, alerts, educational content and AI-assisted summaries.</span></div>
+    <div class="glance-row"><strong>What we collect</strong><span>Account details, portfolio information you provide, subscription status, device and usage information, and communications with us.</span></div>
+    <div class="glance-row"><strong>Why we use it</strong><span>To provide and secure the Services, personalize features, generate insights and alerts, support users, improve performance and comply with law.</span></div>
+    <div class="glance-row"><strong>What we do not do</strong><span>We do not sell personal information for money. We do not execute trades, hold assets, move funds or provide personalized financial or legal advice.</span></div>
+    <div class="glance-row"><strong>Your choices</strong><span>You may manage communications, request access or correction, withdraw consent where applicable, and request account deletion subject to lawful retention.</span></div>
+    <div class="glance-row"><strong>Questions</strong><span>Contact <a href="mailto:support@verdct.org" style="color:var(--g)">support@verdct.org</a>.</span></div>
+  </div>
+
+  <div class="toc">
+    <div class="toc-title">Contents</div>
+    <ol>
+      <li><a href="#s1">1. About This Privacy Policy</a></li>
+      <li><a href="#s2">2. Our Privacy Commitments</a></li>
+      <li><a href="#s3">3. Personal Information We Collect</a></li>
+      <li><a href="#s4">4. How We Collect Information</a></li>
+      <li><a href="#s5">5. How We Use Personal Information</a></li>
+      <li><a href="#s6">6. AI-Assisted Features</a></li>
+      <li><a href="#s7">7. Portfolio Information and Account Connections</a></li>
+      <li><a href="#s8">8. Cookies and Similar Technologies</a></li>
+      <li><a href="#s9">9. When We Share Personal Information</a></li>
+      <li><a href="#s10">10. Cross-Border Processing</a></li>
+      <li><a href="#s11">11. Data Retention and Account Deletion</a></li>
+      <li><a href="#s12">12. Security Safeguards</a></li>
+      <li><a href="#s13">13. Privacy and Security Incidents</a></li>
+      <li><a href="#s14">14. Your Privacy Choices and Rights</a></li>
+      <li><a href="#s15">15. Children and Minimum Age</a></li>
+      <li><a href="#s16">16. Third-Party Content and Links</a></li>
+      <li><a href="#s17">17. Changes to This Privacy Policy</a></li>
+      <li><a href="#s18">18. Contacting Verdct</a></li>
+      <li><a href="#s19">19. Regulatory Information</a></li>
+    </ol>
+  </div>
+
+  <div class="sec" id="s1">
+    <h2>1. About This Privacy Policy</h2>
+    <p>Verdct ("Verdct," "we," "us," or "our") is an Alberta-incorporated company that provides Verdct.org, a mobile application and related investment-information services (collectively, the "Services"). This Privacy Policy applies when you access or use a Verdct Service that links to it.</p>
+    <p>This policy should be read together with Verdct's Terms of Use, Financial and Investment Disclaimer, AI Disclosure and any notice presented when a specific feature collects or uses information.</p>
+    <p>Third-party websites, app stores, news sources, market-data providers, authentication providers and other services linked from Verdct have their own privacy practices. This policy does not govern those third parties.</p>
+  </div>
+
+  <div class="sec" id="s2">
+    <h2>2. Our Privacy Commitments</h2>
+    <p>We design our privacy practices around accountability, transparency, meaningful consent, limited collection, appropriate safeguards, accuracy, access and responsible retention.</p>
+    <p>Portfolio and investment information can reveal sensitive details about a person's finances. We treat that information as sensitive and do not use it for unrelated behavioural advertising.</p>
+    <p>Verdct does not sell personal information for money. We require service providers to process personal information only for authorized purposes, subject to appropriate contractual and security requirements.</p>
+  </div>
+
+  <div class="sec" id="s3">
+    <h2>3. Personal Information We Collect</h2>
+    <h3>3.1 Account and Profile Information</h3>
+    <p>When you create or manage an account, we may collect your name, email address, account identifier, authentication information, province or country, language, preferences and similar profile details.</p>
+    <h3>3.2 Portfolio and Investment Information</h3>
+    <p>We may collect information that you choose to enter, upload, import or otherwise provide, including securities, quantities, account labels, cost basis, allocations, watchlists, transactions, dividends, cash balances and performance information.</p>
+    <p>Verdct may use this information to display your portfolio, calculate metrics, personalize alerts, explain changes and generate educational or AI-assisted insights. Calculations and outputs depend on the accuracy, timeliness and completeness of the information available to Verdct.</p>
+    <h3>3.3 Subscription and Purchase Information</h3>
+    <p>We may receive your subscription plan, purchase status, renewal status, receipt or transaction identifier and related entitlement information from Apple or another authorized payment provider. Payment-card details are generally processed by the applicable app store or payment provider rather than Verdct.</p>
+    <h3>3.4 Device, Technical and Usage Information</h3>
+    <p>When you use the Services, we may automatically receive an IP address, device type, operating system, browser, app version, language, time zone, push-notification token, security events, log data, crash reports, diagnostics, screens viewed, feature interactions, searches and notification engagement.</p>
+    <h3>3.5 Communications and Support</h3>
+    <p>We collect information contained in support requests, feedback, survey responses, privacy requests and other communications with Verdct.</p>
+    <h3>3.6 Information from Third Parties</h3>
+    <p>We may receive information from app stores, authentication providers, market-data providers, analytics or crash-reporting providers, notification providers and other services used to operate Verdct. We receive only the information made available under the relevant integration, agreement and your settings or authorization.</p>
+  </div>
+
+  <div class="sec" id="s4">
+    <h2>4. How We Collect Information</h2>
+    <p>We collect information directly from you, automatically through the Services, and from third parties that support Verdct or that you choose to connect. Where a feature involves a material or unexpected use, we may provide additional notice and request consent where required.</p>
+  </div>
+
+  <div class="sec" id="s5">
+    <h2>5. How We Use Personal Information</h2>
+    <h3>5.1 Providing and Personalizing the Services</h3>
+    <p>We use personal information to create and maintain accounts; display and organize portfolio information; calculate portfolio metrics; provide market news and educational content; generate daily scores, explanations and alerts; remember preferences; and deliver requested functionality.</p>
+    <h3>5.2 Security, Fraud Prevention and Reliability</h3>
+    <p>We use account, device, authentication and activity information to secure accounts, detect suspicious activity, prevent fraud or abuse, troubleshoot errors, maintain availability and enforce our Terms of Use.</p>
+    <h3>5.3 Support and Communications</h3>
+    <p>We use contact and account information to answer questions, provide service and security notices, deliver requested notifications, explain changes, and send marketing communications where permitted. You may unsubscribe from marketing messages, but we may continue to send transactional, legal and security communications.</p>
+    <h3>5.4 Improvement, Analytics and Research</h3>
+    <p>We may analyze usage, diagnostics and feedback to understand feature performance, improve usability, develop new functionality, test changes and maintain quality. Where practical, we use aggregated or de-identified information for these purposes.</p>
+    <h3>5.5 Legal and Corporate Purposes</h3>
+    <p>We may use personal information to comply with law, respond to valid legal process, protect rights and safety, investigate disputes, maintain records, complete audits, and support a financing, merger, acquisition, reorganization or sale of all or part of the business.</p>
+  </div>
+
+  <div class="sec" id="s6">
+    <h2>6. AI-Assisted Features</h2>
+    <p>Verdct may use artificial intelligence and automated systems to summarize market news, explain portfolio changes, classify information, identify patterns, generate plain-language observations and support certain user-service functions.</p>
+    <p>Depending on the feature, inputs may include portfolio information, user preferences, prompts, relevant market information and limited contextual information needed to produce the requested output.</p>
+    <div class="callout"><strong>No financial or legal advice.</strong> AI-generated outputs can be incomplete, delayed, outdated, inconsistent or wrong. They are provided only for informational and educational purposes. They are not personalized financial, investment, legal, accounting or tax advice and should not be the sole basis for any decision.</div>
+    <p>Verdct does not use AI outputs to execute trades, transfer money or change investments. Human review is not guaranteed for every output. Users should verify important information using primary sources and consult qualified professionals where appropriate.</p>
+    <p>Verdct may retain limited prompts, outputs, feedback and diagnostic information to deliver the feature, investigate errors, improve quality, prevent misuse and support users, subject to access controls and retention practices. We do not authorize third-party AI providers to use personal portfolio information for unrelated advertising.</p>
+  </div>
+
+  <div class="sec" id="s7">
+    <h2>7. Portfolio Information and Account Connections</h2>
+    <p>Verdct may allow users to enter holdings manually, upload or import information or, where offered, authorize a connection through a third-party financial-data provider. The exact information available depends on the feature, provider and your authorization.</p>
+    <p>Unless Verdct expressly introduces a separately disclosed regulated transaction feature, Verdct does not place trades, route orders, hold or custody assets, withdraw money, transfer funds or change investments. A third-party connection is also governed by that provider's terms and privacy notice.</p>
+    <p>You may revoke a connection through the available account settings or through the relevant provider. Revocation stops future collection through that connection but does not automatically delete information already received and lawfully retained by Verdct.</p>
+  </div>
+
+  <div class="sec" id="s8">
+    <h2>8. Cookies and Similar Technologies</h2>
+    <p>Verdct may use cookies, local storage, software development kits and similar technologies for authentication, security, preferences, analytics, crash reporting, performance and feature operation.</p>
+    <p>Some technologies are necessary for the Services to function. Where required, we will seek consent before using non-essential technologies. Browser, device and operating-system settings may allow you to limit certain technologies, although doing so can affect functionality.</p>
+  </div>
+
+  <div class="sec" id="s9">
+    <h2>9. When We Share Personal Information</h2>
+    <h3>9.1 Service Providers</h3>
+    <p>We may share information with carefully selected providers that host or support the Services, authenticate users, process subscription entitlements, deliver notifications, provide analytics or crash reporting, supply market data, support AI-assisted features, provide customer support, or assist with security, accounting and legal compliance.</p>
+    <p>Service providers are permitted to process information only for authorized purposes and are expected to use appropriate confidentiality and security safeguards.</p>
+    <h3>9.2 Legal, Safety and Enforcement</h3>
+    <p>We may disclose information where we reasonably believe disclosure is required by law or valid legal process; necessary to detect, investigate or prevent fraud, abuse or security incidents; or appropriate to protect Verdct, users or the public.</p>
+    <h3>9.3 Business Transactions</h3>
+    <p>Information may be disclosed in connection with due diligence, financing, merger, acquisition, reorganization, sale of assets or a similar transaction. We will use appropriate safeguards and provide notice where required by law.</p>
+    <h3>9.4 With Your Direction or Consent</h3>
+    <p>We may share information when you direct us to do so, activate an integration or otherwise provide valid consent.</p>
+  </div>
+
+  <div class="sec" id="s10">
+    <h2>10. Cross-Border Processing</h2>
+    <p>Verdct and its service providers may process or store information in Canada, the United States or other jurisdictions. Information processed outside your province or country may be subject to the laws of that jurisdiction and may be accessible to courts, law-enforcement or national-security authorities under local law.</p>
+    <p>We assess providers and use contractual, technical and organizational safeguards appropriate to the sensitivity of the information and the service provided.</p>
+  </div>
+
+  <div class="sec" id="s11">
+    <h2>11. Data Retention and Account Deletion</h2>
+    <p>We retain personal information only as long as reasonably necessary for the purposes described in this policy, including service delivery, security, fraud prevention, dispute resolution, accounting, legal compliance and enforcement.</p>
+    <p>Retention periods vary by data type. Account and portfolio information is generally retained while an account remains active and for a limited period after deletion to complete the deletion process, protect the Services and satisfy legal obligations. Security logs, support records, subscription records and consent records may be retained for different periods.</p>
+    <p>When information is no longer required, we delete it, de-identify it or allow it to be overwritten through established backup cycles. Residual copies may remain temporarily in protected backups.</p>
+    <p>Users may initiate account deletion through the account or privacy settings available in the App, or contact Verdct. Deleting the App from a device does not delete a Verdct account. We may retain limited information where required by law or reasonably necessary for fraud prevention, security, accounting or dispute purposes.</p>
+  </div>
+
+  <div class="sec" id="s12">
+    <h2>12. Security Safeguards</h2>
+    <p>Verdct uses administrative, technical and organizational safeguards designed to protect personal information against loss, theft and unauthorized access, use, disclosure, copying, modification, disposal or destruction.</p>
+    <p>Safeguards are selected based on the sensitivity and amount of information, the purposes for which it is used and the format in which it is stored. Measures may include encrypted communications, access controls, authentication protections, logging, monitoring, secure development practices, vendor review, backup procedures and incident-response processes.</p>
+    <p>No online service can guarantee absolute security. You are responsible for protecting your device and credentials, using a strong and unique password, and promptly reporting suspected unauthorized access.</p>
+  </div>
+
+  <div class="sec" id="s13">
+    <h2>13. Privacy and Security Incidents</h2>
+    <p>We investigate suspected privacy and security incidents and take reasonable steps to contain, assess and remediate them. Where required by applicable law, we will notify affected individuals and privacy regulators of qualifying breaches.</p>
+  </div>
+
+  <div class="sec" id="s14">
+    <h2>14. Your Privacy Choices and Rights</h2>
+    <p>Depending on applicable law and the circumstances, you may have the right to:</p>
+    <ul>
+      <li>request access to personal information under Verdct's control;</li>
+      <li>request correction of inaccurate or incomplete information;</li>
+      <li>withdraw consent for optional processing, subject to legal or contractual restrictions and reasonable notice;</li>
+      <li>request deletion of your account and personal information, subject to lawful retention;</li>
+      <li>change communication and notification preferences; and</li>
+      <li>challenge Verdct's compliance with applicable privacy law.</li>
+    </ul>
+    <p>We may need to verify your identity before completing a request. We may refuse or limit a request where permitted or required by law and will explain the reason where appropriate.</p>
+    <p>You can manage push notifications through device settings and available in-app controls. You can unsubscribe from marketing emails using the link in the message.</p>
+  </div>
+
+  <div class="sec" id="s15">
+    <h2>15. Children and Minimum Age</h2>
+    <p>Verdct is intended for adults and is not directed to children. You must be at least 16 years old, or the age of majority in your jurisdiction if higher, to create an account. If we learn that personal information was collected from a child contrary to this policy, we will take appropriate steps to delete it.</p>
+  </div>
+
+  <div class="sec" id="s16">
+    <h2>16. Third-Party Content and Links</h2>
+    <p>Verdct may display or link to news, market information, app stores, authentication services and other third-party content. Verdct does not control third-party privacy practices, and you should review the applicable privacy notice before providing information to a third party.</p>
+  </div>
+
+  <div class="sec" id="s17">
+    <h2>17. Changes to This Privacy Policy</h2>
+    <p>We may update this Privacy Policy when our Services, practices or legal obligations change. We will post the updated policy on Verdct.org with a revised effective date and provide additional notice or obtain consent where required for material changes.</p>
+  </div>
+
+  <div class="sec" id="s18">
+    <h2>18. Contacting Verdct</h2>
+    <p>Questions, access or correction requests, account-deletion requests, consent withdrawals and privacy complaints may be submitted to the person responsible for Verdct's privacy program:</p>
+    <div class="contact-table">
+      <div class="contact-row"><strong>Organization</strong><span>Verdct</span></div>
+      <div class="contact-row"><strong>Website</strong><span>Verdct.org</span></div>
+      <div class="contact-row"><strong>Support email</strong><span><a href="mailto:support@verdct.org" style="color:var(--g)">support@verdct.org</a></span></div>
+    </div>
+    <p>We will review and respond to privacy inquiries within the time required by applicable law. If you are not satisfied with our response, you may contact the Office of the Information and Privacy Commissioner of Alberta or, where applicable, the Office of the Privacy Commissioner of Canada.</p>
+  </div>
+
+  <div class="sec" id="s19">
+    <h2>19. Regulatory Information</h2>
+    <p>Verdct is incorporated in Alberta, Canada. Verdct's privacy program is designed with reference to Alberta's Personal Information Protection Act (PIPA), which governs provincially regulated private-sector organizations in Alberta, and the federal Personal Information Protection and Electronic Documents Act (PIPEDA) where it applies, including certain interprovincial and international commercial activities.</p>
+    <p>Other Canadian provincial privacy laws may apply depending on the location of a user and the nature of the activity. Nothing in this policy limits rights that cannot lawfully be limited.</p>
+    <h3>Official Privacy Resources</h3>
+    <div class="res-list">
+      <a href="https://www.oipc.ab.ca/" target="_blank" rel="noopener">Office of the Information and Privacy Commissioner of Alberta: PIPA overview</a>
+      <a href="https://www.alberta.ca/personal-information-protection-act" target="_blank" rel="noopener">Government of Alberta: Personal Information Protection Act</a>
+      <a href="https://www.priv.gc.ca/" target="_blank" rel="noopener">Office of the Privacy Commissioner of Canada: PIPEDA</a>
+      <a href="index.html">Verdct website</a>
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  <a class="footer-logo" href="index.html">Verd<span>ct</span></a>
+  <div class="footer-links">
+    <a href="privacy.html">Privacy</a>
+    <a href="terms.html">Terms</a>
+    <a href="mailto:support@verdct.org">Contact Us</a>
+  </div>
+  <span class="footer-copy">© 2026 Verdct Inc. · Alberta, Canada</span>
+</footer>
+
+</body>
+</html>

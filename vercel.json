@@ -6,6 +6,14 @@
       "use": "@vercel/static"
     },
     {
+      "src": "privacy.html",
+      "use": "@vercel/static"
+    },
+    {
+      "src": "terms.html",
+      "use": "@vercel/static"
+    },
+    {
       "src": "googlede5c2596a43ae99e.html",
       "use": "@vercel/static"
     }
@@ -14,6 +22,22 @@
     {
       "src": "/googlede5c2596a43ae99e.html",
       "dest": "/googlede5c2596a43ae99e.html"
+    },
+    {
+      "src": "/privacy",
+      "dest": "/privacy.html"
+    },
+    {
+      "src": "/privacy.html",
+      "dest": "/privacy.html"
+    },
+    {
+      "src": "/terms",
+      "dest": "/terms.html"
+    },
+    {
+      "src": "/terms.html",
+      "dest": "/terms.html"
     },
     {
       "src": "/(.*)",
