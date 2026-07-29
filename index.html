@@ -32,7 +32,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;background:rgba(255,255,255,
 .nav-links a:hover{color:var(--blk)}
 .nav-links a.nav-dl{background:var(--g);color:#fff;border:none;border-radius:8px;padding:9px 20px;font-size:13px;font-weight:600;cursor:pointer;text-decoration:none;font-family:'Inter',sans-serif;transition:background 0.2s;box-shadow:0 2px 8px rgba(45,122,79,0.3)}
 .nav-links a.nav-dl:hover{background:var(--g2);color:#fff}
-@media(max-width:640px){.nav-links a{display:none}}
+@media(max-width:640px){.nav-links a:not(.nav-dl){display:none}}
 
 /* HERO */
 .hero{min-height:100vh;display:grid;place-items:center;text-align:center;padding:120px 6vw 80px;background:#fff;position:relative}
