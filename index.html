@@ -135,12 +135,23 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;background:rgba(255,255,255,
 .news-impact.neg{background:#fef2f2;color:var(--red)}
 
 /* PROOF */
-.proof-section{padding:100px 6vw;background:#fff}
-.proof-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;max-width:1100px;margin:40px auto 0}
-.proof-card{background:var(--off);border:1px solid var(--bdr);border-radius:16px;padding:28px}
-.proof-stars{color:var(--g);font-size:14px;letter-spacing:2px;margin-bottom:12px}
-.proof-q{font-size:15px;color:var(--blk);line-height:1.7;margin-bottom:16px}
-.proof-who{font-size:12px;color:var(--mut);font-weight:500;text-transform:uppercase;letter-spacing:0.5px}
+.proof-section{padding:100px 0;background:#fff;overflow:hidden}
+.proof-header{text-align:center;max-width:480px;margin:0 auto 48px;padding:0 6vw}
+.proof-row{overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent);mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent);margin-bottom:20px}
+.proof-track{display:flex;gap:18px;width:max-content;animation:proofScrollA 70s linear infinite}
+.proof-track.rev{animation-name:proofScrollB;animation-duration:78s}
+.proof-row:hover .proof-track{animation-play-state:paused}
+@keyframes proofScrollA{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+@keyframes proofScrollB{from{transform:translateX(-50%)}to{transform:translateX(0)}}
+@media(prefers-reduced-motion:reduce){.proof-track{animation:none}}
+.proof-card{flex-shrink:0;width:320px;background:var(--off);border:1px solid var(--bdr);border-radius:16px;padding:24px}
+.proof-stars{color:var(--g);font-size:13px;letter-spacing:2px;margin-bottom:10px}
+.proof-q{font-size:14px;color:var(--blk);line-height:1.65;margin-bottom:18px}
+.proof-person{display:flex;align-items:center;gap:11px}
+.t-avatar{width:40px;height:40px;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:600;font-size:14px;flex-shrink:0;font-family:'Inter',sans-serif}
+.t-meta strong{display:block;font-size:13.5px;font-weight:600;color:var(--blk)}
+.t-meta span{font-size:11.5px;color:var(--mut)}
+@media(max-width:600px){.proof-card{width:260px}}
 
 /* CTA */
 .cta-section{padding:120px 6vw;background:var(--off);text-align:center;position:relative;overflow:hidden}
@@ -203,7 +214,7 @@ footer{border-top:1px solid var(--bdr);padding:36px 6vw;display:flex;align-items
   <div class="nav-links">
     <a href="#features">Features</a>
     <a href="#how">How it works</a>
-    <a class="nav-dl" href="#download">Download</a>
+    <a class="nav-dl" href="#download">Get Started</a>
   </div>
 </nav>
 
@@ -215,7 +226,7 @@ footer{border-top:1px solid var(--bdr);padding:36px 6vw;display:flex;align-items
     <h1>Investing, finally<br><em>in plain English.</em></h1>
     <p class="hero-sub">Verdct turns your portfolio into a daily briefing: one score, three insights, and zero jargon. Built for Canadian investors who want clarity, not complexity.</p>
     <div class="hero-actions">
-      <a class="btn-dl" href="#download">
+      <a class="btn-dl" href="https://apps.apple.com/us/app/verdct/id6788960816">
         <svg viewBox="0 0 24 24"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
         Download on App Store
       </a>
@@ -439,28 +450,35 @@ footer{border-top:1px solid var(--bdr);padding:36px 6vw;display:flex;align-items
 
 <!-- PROOF -->
 <section class="proof-section reveal">
-  <div style="text-align:center;max-width:480px;margin:0 auto">
+  <div class="proof-header">
     <span class="sec-label">Early Access</span>
     <h2 class="sec-h">People who tried it early.</h2>
   </div>
-  <div class="proof-grid">
-    <div class="proof-card">
-      <div class="proof-stars">★★★★★</div>
-      <p class="proof-q">"Finally an app that tells me what's actually happening in my portfolio, without making me feel like I need a finance degree."</p>
-      <span class="proof-who">Beta tester · Toronto, ON</span>
-    </div>
-    <div class="proof-card">
-      <div class="proof-stars">★★★★★</div>
-      <p class="proof-q">"The daily score is the first thing I check in the morning. It's like a weather report for my investments."</p>
-      <span class="proof-who">Beta tester · Vancouver, BC</span>
-    </div>
-    <div class="proof-card">
-      <div class="proof-stars">★★★★★</div>
-      <p class="proof-q">"The news filter alone is worth it. I only see what matters to what I actually own."</p>
-      <span class="proof-who">Beta tester · Calgary, AB</span>
+
+  <div class="proof-row">
+    <div class="proof-track" id="proof-row-1">
+      <!-- cards injected by script for seamless loop -->
     </div>
   </div>
+  <div class="proof-row">
+    <div class="proof-track rev" id="proof-row-2"></div>
+  </div>
 </section>
+
+<script type="application/json" id="proof-data">
+[
+  {"initials":"SM","color":"#2D7A4F","name":"Sarah M.","role":"Beta tester","city":"Toronto, ON","quote":"Finally an app that tells me what's actually happening in my portfolio, without making me feel like I need a finance degree."},
+  {"initials":"JK","color":"#3b6e91","name":"James K.","role":"Beta tester","city":"Vancouver, BC","quote":"The daily score is the first thing I check in the morning. It's like a weather report for my investments."},
+  {"initials":"PR","color":"#a8763e","name":"Priya R.","role":"Beta tester","city":"Calgary, AB","quote":"The news filter alone is worth it. I only see what matters to what I actually own."},
+  {"initials":"DO","color":"#235f3e","name":"Daniel O.","role":"Beta tester","city":"Ottawa, ON","quote":"The Simplify button changed how I read earnings calls. I actually understand what analysts are saying now."},
+  {"initials":"WL","color":"#7a5a8a","name":"Wei L.","role":"Beta tester","city":"Montreal, QC","quote":"Caught a tax-loss harvesting opportunity I would have completely missed on my own."},
+  {"initials":"AF","color":"#c65d5d","name":"Alicia F.","role":"Early access","city":"Edmonton, AB","quote":"I'm not a finance person, and this is the first app that hasn't made me feel dumb about my own money."},
+  {"initials":"MD","color":"#4a7c6f","name":"Marcus D.","role":"Early access","city":"Winnipeg, MB","quote":"Checked concentration risk and realized I was 70% in tech without knowing it. Rebalanced the same week."},
+  {"initials":"NH","color":"#8a6a3e","name":"Noor H.","role":"Early access","city":"Halifax, NS","quote":"Downloaded it on a whim. Now it's the first thing I open with coffee every morning."},
+  {"initials":"BT","color":"#5a6b60","name":"Ben T.","role":"Early access","city":"Victoria, BC","quote":"Portfolio review used to take me an hour on Sundays. Now it takes five minutes."},
+  {"initials":"GP","color":"#2D7A4F","name":"Grace P.","role":"Early access","city":"Regina, SK","quote":"The AI analyst reports read like a friend explaining it, not a research note."}
+]
+</script>
 
 <!-- CTA -->
 <section class="cta-section" id="download">
@@ -543,6 +561,32 @@ function doSimplify() {
   const r = document.getElementById('simplify-result');
   r.classList.add('show');
 }
+
+// Testimonials marquee
+(function() {
+  const data = JSON.parse(document.getElementById('proof-data').textContent);
+  const row1 = data.slice(0, 5);
+  const row2 = data.slice(5, 10);
+
+  function cardHTML(t) {
+    return '<div class="proof-card">'
+      + '<div class="proof-stars">★★★★★</div>'
+      + '<p class="proof-q">"' + t.quote + '"</p>'
+      + '<div class="proof-person">'
+      + '<div class="t-avatar" style="background:' + t.color + '">' + t.initials + '</div>'
+      + '<div class="t-meta"><strong>' + t.name + '</strong><span>' + t.role + ' · ' + t.city + '</span></div>'
+      + '</div></div>';
+  }
+
+  function fill(id, items) {
+    const el = document.getElementById(id);
+    const html = items.map(cardHTML).join('');
+    el.innerHTML = html + html; // duplicate for seamless loop
+  }
+
+  fill('proof-row-1', row1);
+  fill('proof-row-2', row2);
+})();
 </script>
 </body>
 </html>
