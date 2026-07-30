@@ -1,47 +1,8 @@
 {
-  "version": 2,
-  "builds": [
-    {
-      "src": "index.html",
-      "use": "@vercel/static"
-    },
-    {
-      "src": "privacy.html",
-      "use": "@vercel/static"
-    },
-    {
-      "src": "terms.html",
-      "use": "@vercel/static"
-    },
-    {
-      "src": "googlede5c2596a43ae99e.html",
-      "use": "@vercel/static"
-    }
-  ],
-  "routes": [
-    {
-      "src": "/googlede5c2596a43ae99e.html",
-      "dest": "/googlede5c2596a43ae99e.html"
-    },
-    {
-      "src": "/privacy",
-      "dest": "/privacy.html"
-    },
-    {
-      "src": "/privacy.html",
-      "dest": "/privacy.html"
-    },
-    {
-      "src": "/terms",
-      "dest": "/terms.html"
-    },
-    {
-      "src": "/terms.html",
-      "dest": "/terms.html"
-    },
-    {
-      "src": "/(.*)",
-      "dest": "/index.html"
-    }
+  "rewrites": [
+    { "source": "/googlede5c2596a43ae99e.html", "destination": "/googlede5c2596a43ae99e.html" },
+    { "source": "/privacy", "destination": "/privacy.html" },
+    { "source": "/terms", "destination": "/terms.html" },
+    { "source": "/admin", "destination": "/admin.html" }
   ]
 }

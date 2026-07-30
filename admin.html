@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Admin: Verdct</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --g:#2D7A4F;
+  --g2:#235f3e;
+  --gp:#e8f5ee;
+  --blk:#0c0c0c;
+  --off:#f6f8f6;
+  --mut:#5a6b60;
+  --bdr:#d4e4da;
+  --red:#E05252;
+}
+body{font-family:'Inter',sans-serif;background:var(--off);color:var(--blk);min-height:100vh}
+
+/* LOGIN */
+.login-wrap{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:24px}
+.login-card{background:#fff;border:1px solid var(--bdr);border-radius:18px;padding:40px 36px;max-width:380px;width:100%;box-shadow:0 12px 48px rgba(0,0,0,0.06)}
+.login-logo{font-family:'Playfair Display',serif;font-size:24px;font-weight:600;margin-bottom:4px}
+.login-logo span{color:var(--g)}
+.login-sub{font-size:13px;color:var(--mut);margin-bottom:28px}
+.field{margin-bottom:14px}
+.field label{display:block;font-size:12px;font-weight:600;color:var(--mut);margin-bottom:6px;text-transform:uppercase;letter-spacing:0.5px}
+.field input{width:100%;padding:11px 14px;border:1.5px solid var(--bdr);border-radius:10px;font-size:14px;font-family:'Inter',sans-serif;color:var(--blk)}
+.field input:focus{outline:none;border-color:var(--g)}
+.login-btn{width:100%;background:var(--g);color:#fff;border:none;border-radius:10px;padding:12px;font-size:14px;font-weight:600;cursor:pointer;margin-top:8px;transition:background 0.2s}
+.login-btn:hover{background:var(--g2)}
+.login-btn:disabled{opacity:0.6;cursor:default}
+.login-error{color:var(--red);font-size:13px;margin-top:12px;display:none}
+
+/* DASHBOARD */
+.dash{display:none;max-width:1100px;margin:0 auto;padding:32px 6vw 80px}
+.dash-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:32px;flex-wrap:wrap;gap:12px}
+.dash-logo{font-family:'Playfair Display',serif;font-size:20px;font-weight:600}
+.dash-logo span{color:var(--g)}
+.dash-user{font-size:13px;color:var(--mut);display:flex;align-items:center;gap:14px}
+.logout-btn{background:transparent;border:1px solid var(--bdr);border-radius:8px;padding:7px 14px;font-size:12.5px;font-weight:500;cursor:pointer;color:var(--blk);font-family:'Inter',sans-serif}
+.logout-btn:hover{border-color:var(--g);color:var(--g)}
+
+.stat-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:32px}
+.stat-card{background:#fff;border:1px solid var(--bdr);border-radius:16px;padding:22px}
+.stat-label{font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:0.8px;color:var(--mut);margin-bottom:8px}
+.stat-num{font-family:'Playfair Display',serif;font-size:32px;font-weight:600;color:var(--blk)}
+
+.panel-grid{display:grid;grid-template-columns:1.3fr 1fr;gap:20px}
+.panel{background:#fff;border:1px solid var(--bdr);border-radius:16px;padding:24px;margin-bottom:20px}
+.panel h2{font-size:15px;font-weight:600;margin-bottom:16px}
+
+.bar-row{display:flex;align-items:center;gap:12px;margin-bottom:10px}
+.bar-label{width:70px;font-size:12.5px;font-weight:600;flex-shrink:0}
+.bar-track{flex:1;background:var(--off);border-radius:6px;height:20px;overflow:hidden}
+.bar-fill{background:var(--g);height:100%;border-radius:6px;transition:width 0.4s}
+.bar-count{width:36px;text-align:right;font-size:12px;color:var(--mut);flex-shrink:0}
+
+.type-row{display:flex;align-items:center;gap:12px;margin-bottom:12px}
+.type-dot{width:10px;height:10px;border-radius:50%;flex-shrink:0}
+.type-dot.stock{background:var(--g)}
+.type-dot.crypto{background:#a8763e}
+.type-dot.etf{background:#3b6e91}
+.type-name{width:60px;font-size:13px;font-weight:500;text-transform:capitalize}
+.type-track{flex:1;background:var(--off);border-radius:6px;height:12px;overflow:hidden}
+.type-fill{height:100%;border-radius:6px}
+.type-fill.stock{background:var(--g)}
+.type-fill.crypto{background:#a8763e}
+.type-fill.etf{background:#3b6e91}
+.type-count{width:36px;text-align:right;font-size:12px;color:var(--mut)}
+
+.spark{display:flex;align-items:flex-end;gap:3px;height:60px}
+.spark-bar{flex:1;background:var(--g);border-radius:2px 2px 0 0;min-height:2px}
+
+.dash-error{background:#fef2f2;border:1px solid #fecaca;color:var(--red);border-radius:10px;padding:16px;font-size:13.5px;margin-bottom:20px}
+.dash-loading{text-align:center;padding:60px;color:var(--mut);font-size:14px}
+
+@media(max-width:800px){.stat-grid{grid-template-columns:1fr 1fr}.panel-grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<div class="login-wrap" id="login-wrap">
+  <div class="login-card">
+    <div class="login-logo">Verd<span>ct</span></div>
+    <div class="login-sub">Admin dashboard &middot; sign in with your Verdct account</div>
+    <form id="login-form">
+      <div class="field">
+        <label>Email</label>
+        <input type="email" id="email" required autocomplete="username">
+      </div>
+      <div class="field">
+        <label>Password</label>
+        <input type="password" id="password" required autocomplete="current-password">
+      </div>
+      <button type="submit" class="login-btn" id="login-btn">Sign in</button>
+      <div class="login-error" id="login-error"></div>
+    </form>
+  </div>
+</div>
+
+<div class="dash" id="dash">
+  <div class="dash-top">
+    <div class="dash-logo">Verd<span>ct</span> Admin</div>
+    <div class="dash-user">
+      <span id="user-email"></span>
+      <button class="logout-btn" id="logout-btn">Sign out</button>
+    </div>
+  </div>
+
+  <div id="dash-body">
+    <div class="dash-loading">Loading overview...</div>
+  </div>
+</div>
+
+<script>
+const SUPABASE_URL = 'https://tukrqbclyjykycqkvtck.supabase.co';
+const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InR1a3JxYmNseWp5a3ljcWt2dGNrIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzM0NDg3NzAsImV4cCI6MjA4OTAyNDc3MH0.tKsUD0250AtSx_Wf7Ox8dakMptVIdUqVud-MNKi887Y';
+
+const sb = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+const loginWrap = document.getElementById('login-wrap');
+const dash = document.getElementById('dash');
+const loginForm = document.getElementById('login-form');
+const loginBtn = document.getElementById('login-btn');
+const loginError = document.getElementById('login-error');
+const userEmailEl = document.getElementById('user-email');
+const dashBody = document.getElementById('dash-body');
+
+function showLogin() {
+  loginWrap.style.display = 'flex';
+  dash.style.display = 'none';
+}
+
+function showDash(email) {
+  loginWrap.style.display = 'none';
+  dash.style.display = 'block';
+  userEmailEl.textContent = email;
+}
+
+loginForm.addEventListener('submit', async (e) => {
+  e.preventDefault();
+  loginError.style.display = 'none';
+  loginBtn.disabled = true;
+  loginBtn.textContent = 'Signing in...';
+
+  const email = document.getElementById('email').value;
+  const password = document.getElementById('password').value;
+
+  const { data, error } = await sb.auth.signInWithPassword({ email, password });
+
+  loginBtn.disabled = false;
+  loginBtn.textContent = 'Sign in';
+
+  if (error) {
+    loginError.textContent = error.message;
+    loginError.style.display = 'block';
+    return;
+  }
+
+  await loadDashboard();
+});
+
+document.getElementById('logout-btn').addEventListener('click', async () => {
+  await sb.auth.signOut();
+  showLogin();
+});
+
+function bar(label, count, max) {
+  const pct = max > 0 ? Math.round((count / max) * 100) : 0;
+  return `<div class="bar-row">
+    <div class="bar-label">${label}</div>
+    <div class="bar-track"><div class="bar-fill" style="width:${pct}%"></div></div>
+    <div class="bar-count">${count}</div>
+  </div>`;
+}
+
+function typeRow(name, count, total) {
+  const pct = total > 0 ? Math.round((count / total) * 100) : 0;
+  return `<div class="type-row">
+    <div class="type-dot ${name}"></div>
+    <div class="type-name">${name}</div>
+    <div class="type-track"><div class="type-fill ${name}" style="width:${pct}%"></div></div>
+    <div class="type-count">${count}</div>
+  </div>`;
+}
+
+function renderDashboard(data) {
+  const maxTicker = data.topTickers.length ? data.topTickers[0].count : 0;
+  const totalTyped = data.typeBreakdown.stock + data.typeBreakdown.crypto + data.typeBreakdown.etf;
+  const maxSignup = data.signupsByDay.length ? Math.max(...data.signupsByDay.map(d => d.count)) : 0;
+
+  dashBody.innerHTML = `
+    <div class="stat-grid">
+      <div class="stat-card"><div class="stat-label">Total Users</div><div class="stat-num">${data.totalUsers}</div></div>
+      <div class="stat-card"><div class="stat-label">Active (7d)</div><div class="stat-num">${data.activeLast7Days}</div></div>
+      <div class="stat-card"><div class="stat-label">Total Holdings</div><div class="stat-num">${data.totalHoldings}</div></div>
+      <div class="stat-card"><div class="stat-label">Avg Holdings / User</div><div class="stat-num">${data.totalUsers ? (data.totalHoldings / data.totalUsers).toFixed(1) : '0'}</div></div>
+    </div>
+    <div class="panel-grid">
+      <div class="panel">
+        <h2>Most-held tickers</h2>
+        ${data.topTickers.length ? data.topTickers.map(t => bar(t.ticker, t.count, maxTicker)).join('') : '<p style="font-size:13px;color:var(--mut)">No holdings yet.</p>'}
+      </div>
+      <div>
+        <div class="panel">
+          <h2>Holdings by type</h2>
+          ${typeRow('stock', data.typeBreakdown.stock, totalTyped)}
+          ${typeRow('crypto', data.typeBreakdown.crypto, totalTyped)}
+          ${typeRow('etf', data.typeBreakdown.etf, totalTyped)}
+        </div>
+        <div class="panel">
+          <h2>Signups (last 30 days)</h2>
+          <div class="spark">
+            ${data.signupsByDay.length ? data.signupsByDay.map(d => `<div class="spark-bar" style="height:${maxSignup > 0 ? Math.max(4, (d.count / maxSignup) * 60) : 4}px" title="${d.day}: ${d.count}"></div>`).join('') : '<p style="font-size:13px;color:var(--mut)">No signups yet.</p>'}
+          </div>
+        </div>
+      </div>
+    </div>
+    <p style="font-size:11px;color:var(--mut);text-align:right">Updated ${new Date(data.generatedAt).toLocaleString()} &middot; aggregate data only</p>
+  `;
+}
+
+async function loadDashboard() {
+  const { data: sessionData } = await sb.auth.getSession();
+  const session = sessionData?.session;
+  if (!session) { showLogin(); return; }
+
+  showDash(session.user.email);
+  dashBody.innerHTML = '<div class="dash-loading">Loading overview...</div>';
+
+  try {
+    const res = await fetch('/api/admin/overview', {
+      headers: { Authorization: `Bearer ${session.access_token}` }
+    });
+    if (!res.ok) {
+      const body = await res.json().catch(() => ({}));
+      dashBody.innerHTML = `<div class="dash-error">${body.error || 'Failed to load dashboard (' + res.status + ')'}</div>`;
+      return;
+    }
+    const data = await res.json();
+    renderDashboard(data);
+  } catch (err) {
+    dashBody.innerHTML = `<div class="dash-error">${err.message}</div>`;
+  }
+}
+
+(async function init() {
+  const { data: sessionData } = await sb.auth.getSession();
+  if (sessionData?.session) {
+    await loadDashboard();
+  } else {
+    showLogin();
+  }
+})();
+</script>
+</body>
+</html>
