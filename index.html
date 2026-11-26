@@ -125,10 +125,12 @@ section.alt{background:var(--off)}
 .news{padding:8px 22px}
 .ni{display:flex;gap:12px;padding:16px 0;border-bottom:1px solid var(--bdr)}
 .ni:last-child{border-bottom:0}
-.tk{font-size:11px;font-weight:700;color:var(--g);background:var(--gp);border-radius:6px;padding:3px 8px;height:fit-content;letter-spacing:.5px}
+.tk{font-size:11px;font-weight:700;color:var(--g);background:var(--gp);border-radius:6px;padding:3px 8px;height:fit-content;letter-spacing:.5px;white-space:nowrap;flex-shrink:0}
 .nh{font-size:14px;font-weight:500;line-height:1.45;margin-bottom:3px}
 .nm{font-size:12px;color:var(--mut)}
 .imp{display:inline-block;font-size:11px;font-weight:600;margin-top:7px;padding:3px 9px;border-radius:999px}
+.wm{font-size:13.5px;color:var(--ink);line-height:1.5;margin-top:8px;padding:9px 11px;background:var(--off);border-radius:9px}
+.wm b{color:var(--g2)}
 .imp.pos{background:var(--gp);color:var(--g)}.imp.neg{background:var(--redp);color:var(--red)}
 
 /* FEATURES */
@@ -222,46 +224,38 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:18px 32px;align-items:center;justif
   </div>
 </div>
 
-<!-- WALKTHROUGH 1: DAILY SCORE -->
+<!-- WALKTHROUGH 1: SIMPLIFY -->
 <section class="sec" id="how">
   <div class="wrap two rv">
     <div>
-      <div class="step"><span>1</span>Wake up to your briefing</div>
-      <span class="label">Daily Score</span>
-      <h2 class="h2">Your morning briefing, <em>in one number.</em></h2>
-      <p class="p">Every morning Verdct scores your portfolio out of 100 and tells you exactly why. No charts to decode, just the three things you need to know today.</p>
+      <div class="step"><span>1</span>Decode the headlines</div>
+      <span class="label">Simplify Button</span>
+      <h2 class="h2">Financial jargon, <em>translated instantly.</em></h2>
+      <p class="p">Finance has its own language, and it keeps most people out. Verdct puts a Simplify button on every headline, term and analyst note, so one tap tells you what it actually means. Try it on a real-style headline below.</p>
       <div class="fl">
-        <div class="fl-item"><div class="fl-ic"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div><div><strong>Calculated overnight</strong><span>Ready when you wake up, every trading day.</span></div></div>
-        <div class="fl-item"><div class="fl-ic"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg></div><div><strong>Explains itself</strong><span>Every score comes with plain-English reasons.</span></div></div>
-        <div class="fl-item"><div class="fl-ic"><svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div><div><strong>Tracks over time</strong><span>See how your portfolio health trends week to week.</span></div></div>
+        <div class="fl-item"><div class="fl-ic"><svg viewBox="0 0 24 24"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg></div><div><strong>One tap</strong><span>No searching, no googling. The answer comes to you.</span></div></div>
+        <div class="fl-item"><div class="fl-ic"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/></svg></div><div><strong>For any level</strong><span>Whether you're brand new or have invested for years.</span></div></div>
       </div>
     </div>
-    <div class="card sc rv d1" id="score-card">
-      <div class="sc-head"><b>Portfolio Score</b><span id="score-date"></span></div>
-      <div class="ring">
-        <svg width="150" height="150" viewBox="0 0 150 150" aria-hidden="true">
-          <circle cx="75" cy="75" r="62" fill="none" stroke="#E8F5EE" stroke-width="12"/>
-          <circle id="ring-arc" cx="75" cy="75" r="62" fill="none" stroke="#2D7A4F" stroke-width="12" stroke-linecap="round"/>
-        </svg>
-        <div class="ring-in"><span class="ring-num" id="ring-num">0</span><span class="ring-sub">/ 100</span></div>
-      </div>
-      <div class="ring-st">Strong portfolio health</div>
-      <div class="ins"><div class="dot g"></div>AAPL earnings beat: position up 4.2% today</div>
-      <div class="ins"><div class="dot a"></div>Tech concentration at 68%: worth a look at diversification</div>
-      <div class="ins"><div class="dot g"></div>TSLA may qualify for tax-loss harvesting this quarter</div>
-      <p class="disc">Example portfolio for illustration.</p>
+    <div class="card sim rv d1">
+      <div class="sim-l">From today's news</div>
+      <div class="sim-o">"FOMC minutes signal a hawkish pivot amid sticky core PCE inflation, compressing equity risk premiums across duration-sensitive growth names."</div>
+      <button type="button" class="btn btn-g" id="sim-btn" onclick="doSimplify()" style="padding:11px 20px;font-size:14px;margin-bottom:14px">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="#fff" aria-hidden="true"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>Simplify
+      </button>
+      <div class="sim-r" id="sim-r"><strong>In plain English:</strong> The Fed is leaning toward keeping interest rates higher for longer because inflation hasn't come down enough. That tends to weigh on growth stocks like tech.</div>
     </div>
   </div>
 </section>
 
-<!-- WALKTHROUGH 2: REPORTS SIMPLIFIED -->
+<!-- WALKTHROUGH 2: REPORTS -->
 <section class="sec alt">
   <div class="wrap two flip rv">
     <div>
       <div class="step"><span>2</span>Read the research</div>
       <span class="label">Reports Simplified</span>
       <h2 class="h2">Analyst reports, <em>without the analyst-speak.</em></h2>
-      <p class="p">Verdct writes a daily report on the stocks you follow, with a bull and bear case. One tap on Simplify turns it into what it actually means for you, with the risks flagged in red. Try it.</p>
+      <p class="p">Say you bought a penny stock because a wellness brand with a famous board member was all over your feed. The research note says revenue jumped 191%, so it sounds great. But buried further down: late filings, constant share issuance and an 8¢ price. Verdct reads the whole report and puts the part that could hurt you first.</p><p class="p" style="margin-top:-12px">Flip between the original and the simplified version of this real Verdct report.</p>
       <div class="fl">
         <div class="fl-item"><div class="fl-ic"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></div><div><strong>Both sides of the story</strong><span>Every report has a bull case and a bear case.</span></div></div>
         <div class="fl-item"><div class="fl-ic"><svg viewBox="0 0 24 24"><path d="M10.3 3.9L1.8 18a2 2 0 001.7 3h17a2 2 0 001.7-3L13.7 3.9a2 2 0 00-3.4 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg></div><div><strong>Risks you can't miss</strong><span>The things that could hurt you are called out first.</span></div></div>
@@ -294,47 +288,56 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:18px 32px;align-items:center;justif
   </div>
 </section>
 
-<!-- WALKTHROUGH 3: SIMPLIFY ANY HEADLINE -->
+<!-- WALKTHROUGH 3: NEWS -->
 <section class="sec">
   <div class="wrap two rv">
     <div>
-      <div class="step"><span>3</span>Decode the headlines</div>
-      <span class="label">Simplify Button</span>
-      <h2 class="h2">Financial jargon, <em>translated instantly.</em></h2>
-      <p class="p">Tap Simplify on any headline, term or analyst note and get a plain-English translation in seconds. Try it below.</p>
-      <div class="fl">
-        <div class="fl-item"><div class="fl-ic"><svg viewBox="0 0 24 24"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg></div><div><strong>One tap</strong><span>No searching, no googling. The answer comes to you.</span></div></div>
-        <div class="fl-item"><div class="fl-ic"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/></svg></div><div><strong>For any level</strong><span>Whether you're brand new or have invested for years.</span></div></div>
-      </div>
-    </div>
-    <div class="card sim rv d1">
-      <div class="sim-l">From today's news</div>
-      <div class="sim-o">"FOMC minutes signal a hawkish pivot amid sticky core PCE inflation, compressing equity risk premiums across duration-sensitive growth names."</div>
-      <button type="button" class="btn btn-g" id="sim-btn" onclick="doSimplify()" style="padding:11px 20px;font-size:14px;margin-bottom:14px">
-        <svg width="15" height="15" viewBox="0 0 24 24" fill="#fff" aria-hidden="true"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>Simplify
-      </button>
-      <div class="sim-r" id="sim-r"><strong>In plain English:</strong> The Fed is leaning toward keeping interest rates higher for longer because inflation hasn't come down enough. That tends to weigh on growth stocks like tech.</div>
-    </div>
-  </div>
-</section>
-
-<!-- WALKTHROUGH 4: NEWS -->
-<section class="sec alt">
-  <div class="wrap two flip rv">
-    <div>
-      <div class="step"><span>4</span>See what matters to you</div>
+      <div class="step"><span>3</span>See what matters to you</div>
       <span class="label">News Simplified</span>
       <h2 class="h2">Only news about <em>what you own.</em></h2>
-      <p class="p">The market generates thousands of headlines a day. Verdct links stories to your actual holdings, even when your stock isn't named, and tells you what each one means for you.</p>
+      <p class="p">Most news that moves your stocks never names them. A new chip export rule hits Nvidia and Apple. A rate decision hits every tech name you own. Verdct connects each story to your actual holdings and tells you, in one line, what it means for you.</p>
       <div class="fl">
         <div class="fl-item"><div class="fl-ic"><svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div><div><strong>Impact tagging</strong><span>Each story is marked positive or negative for your position.</span></div></div>
         <div class="fl-item"><div class="fl-ic"><svg viewBox="0 0 24 24"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/><line x1="4" y1="22" x2="4" y2="15"/></svg></div><div><strong>No noise</strong><span>Stocks you don't own don't show up in your feed.</span></div></div>
       </div>
     </div>
     <div class="card news rv d1">
-      <div class="ni"><span class="tk">AAPL</span><div><div class="nh">Apple beats Q2 earnings estimates, raises full-year guidance</div><div class="nm">Example headline</div><span class="imp pos">▲ Positive for your position</span></div></div>
-      <div class="ni"><span class="tk">TSLA</span><div><div class="nh">Tesla delivery numbers miss expectations for the quarter</div><div class="nm">Example headline</div><span class="imp neg">▼ Negative for your position</span></div></div>
-      <div class="ni"><span class="tk">NVDA</span><div><div class="nh">Nvidia announces next-gen chip architecture at developer conference</div><div class="nm">Example headline</div><span class="imp pos">▲ Positive for your position</span></div></div>
+      <div class="ni"><span class="tk">NVDA · AAPL</span><div><div class="nh">U.S. tightens export rules on advanced chips to China</div><div class="nm">Your stocks aren't named in this story</div><div class="wm"><b>What this means for you:</b> Nvidia sells chips into China and Apple builds there. Both could see pressure on sales.</div><span class="imp neg">▼ Watch for your position</span></div></div>
+      <div class="ni"><span class="tk">SHOP</span><div><div class="nh">Canadian retail sales beat forecasts for the holiday quarter</div><div class="nm">TSX</div><div class="wm"><b>What this means for you:</b> More online shopping usually means more merchant sales running through Shopify.</div><span class="imp pos">▲ Positive for your position</span></div></div>
+      <div class="ni"><span class="tk">TSLA</span><div><div class="nh">Tesla delivery numbers miss expectations for the quarter</div><div class="nm">Named directly</div><div class="wm"><b>What this means for you:</b> Fewer cars sold than Wall Street expected, so the stock often dips until the next update.</div><span class="imp neg">▼ Negative for your position</span></div></div>
+      <p class="disc" style="padding:4px 0 14px">Example stories for illustration.</p>
+    </div>
+  </div>
+</section>
+
+<!-- WALKTHROUGH 4: DAILY SCORE -->
+<section class="sec alt">
+  <div class="wrap two flip rv">
+    <div>
+      <div class="step"><span>4</span>Wake up to your briefing</div>
+      <span class="label">Daily Score</span>
+      <h2 class="h2">Your morning briefing, <em>in one number.</em></h2>
+      <p class="p">Every morning Verdct scores your portfolio out of 100 and tells you exactly why. No charts to decode, just the three things you need to know today.</p>
+      <div class="fl">
+        <div class="fl-item"><div class="fl-ic"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div><div><strong>Calculated overnight</strong><span>Ready when you wake up, every trading day.</span></div></div>
+        <div class="fl-item"><div class="fl-ic"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg></div><div><strong>Explains itself</strong><span>Every score comes with plain-English reasons.</span></div></div>
+        <div class="fl-item"><div class="fl-ic"><svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div><div><strong>Tracks over time</strong><span>See how your portfolio health trends week to week.</span></div></div>
+      </div>
+    </div>
+    <div class="card sc rv d1" id="score-card">
+      <div class="sc-head"><b>Portfolio Score</b><span id="score-date"></span></div>
+      <div class="ring">
+        <svg width="150" height="150" viewBox="0 0 150 150" aria-hidden="true">
+          <circle cx="75" cy="75" r="62" fill="none" stroke="#E8F5EE" stroke-width="12"/>
+          <circle id="ring-arc" cx="75" cy="75" r="62" fill="none" stroke="#2D7A4F" stroke-width="12" stroke-linecap="round"/>
+        </svg>
+        <div class="ring-in"><span class="ring-num" id="ring-num">0</span><span class="ring-sub">/ 100</span></div>
+      </div>
+      <div class="ring-st">Strong portfolio health</div>
+      <div class="ins"><div class="dot g"></div>AAPL earnings beat: position up 4.2% today</div>
+      <div class="ins"><div class="dot a"></div>Tech concentration at 68%: worth a look at diversification</div>
+      <div class="ins"><div class="dot g"></div>TSLA may qualify for tax-loss harvesting this quarter</div>
+      <p class="disc">Example portfolio for illustration.</p>
     </div>
   </div>
 </section>
