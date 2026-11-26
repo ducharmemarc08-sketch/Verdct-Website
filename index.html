@@ -220,6 +220,21 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:18px 32px;align-items:center;justif
 .an-more{font-size:13.5px;color:#55524A}
 .vw{display:none}.vw.on{display:block;animation:fade .35s ease}
 
+
+/* DEMO STAGES */
+.stage{position:relative;border-radius:30px;padding:56px 40px 44px;display:flex;flex-direction:column;align-items:center;overflow:hidden;min-height:640px;justify-content:center}
+.stage::before{content:"";position:absolute;inset:0;background-image:radial-gradient(rgba(15,20,17,.09) 1px,transparent 1px);background-size:18px 18px;mask-image:radial-gradient(ellipse 75% 70% at 50% 50%,#000 30%,transparent 80%);-webkit-mask-image:radial-gradient(ellipse 75% 70% at 50% 50%,#000 30%,transparent 80%)}
+.stage.green{background:linear-gradient(160deg,#E3F1E7 0%,#F4F9F5 55%,#DDEDE2 100%)}
+.stage.warm{background:linear-gradient(160deg,#F8EBD6 0%,#FCF7EE 55%,#F3E2C6 100%)}
+.stage>*{position:relative}
+.hint{display:inline-flex;align-items:center;gap:8px;background:#141414;color:#fff;font-size:13px;font-weight:600;padding:8px 14px;border-radius:999px;margin-bottom:18px;box-shadow:0 8px 20px rgba(0,0,0,.15);animation:bob 2.4s ease-in-out infinite}
+.hint svg{width:14px;height:14px}
+@keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-4px)}}
+.stage .ar,.stage .an{box-shadow:0 30px 70px rgba(15,20,17,.14),0 2px 6px rgba(15,20,17,.05)}
+.stage .ar{transform:rotate(-1deg)}.stage .an{transform:rotate(1deg)}
+@media(max-width:600px){.stage{padding:36px 14px 28px;min-height:0;border-radius:22px}.stage .ar,.stage .an{transform:none}}
+@media(prefers-reduced-motion:reduce){.hint{animation:none}}
+
 /* LARGE SCREENS */
 @media(min-width:1200px){
   .wrap{max-width:1320px}
@@ -329,11 +344,13 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:18px 32px;align-items:center;justif
       <h2 class="h2">Analyst reports, <em>without the analyst-speak.</em></h2>
       <p class="p">A real Verdct report on Apple. Tap Simplify and see in seconds why it says watch carefully.</p>
       <div class="fl">
-        <div class="fl-item"><div class="fl-ic"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></div><div><strong>Both sides of the story</strong><span>Every report has a bull case and a bear case.</span></div></div>
+        <div class="fl-item"><div class="fl-ic"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></div><div><strong>One tap</strong><span>From research note to plain English instantly.</span></div></div>
         <div class="fl-item"><div class="fl-ic"><svg viewBox="0 0 24 24"><path d="M10.3 3.9L1.8 18a2 2 0 001.7 3h17a2 2 0 001.7-3L13.7 3.9a2 2 0 00-3.4 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg></div><div><strong>Risks you can't miss</strong><span>The things that could hurt you are called out first.</span></div></div>
       </div>
     </div>
-    <div class="ar rv d1">
+    <div class="stage green rv d1">
+      <div class="hint"><svg viewBox="0 0 24 24" fill="#fff" aria-hidden="true"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>Tap Simplify to try it</div>
+      <div class="ar">
       <div class="ar-seg" role="group" aria-label="Report view">
         <button type="button" id="b-orig" class="on" onclick="setView('orig')">Original</button>
         <button type="button" id="b-simp" onclick="setView('simp')">Simplified</button>
@@ -361,6 +378,7 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:18px 32px;align-items:center;justif
       </div>
       <p class="ar-disc">For information only. Not investment advice or a recommendation to buy or sell any security.</p>
     </div>
+    </div>
   </div>
 </section>
 
@@ -377,7 +395,9 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:18px 32px;align-items:center;justif
         <div class="fl-item"><div class="fl-ic"><svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div><div><strong>Honest context</strong><span>It even tells you when a story isn't about the company at all.</span></div></div>
       </div>
     </div>
-    <div class="an rv d1">
+    <div class="stage warm rv d1">
+      <div class="hint"><svg viewBox="0 0 24 24" fill="#fff" aria-hidden="true"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>Tap Simplify to try it</div>
+      <div class="an">
       <div class="an-top"><span class="an-tk">AMZN</span><span class="an-c">CAUTION</span><span>· reuters.com</span><span class="an-date">Sep 23, 2026</span></div>
       <div class="vw on" id="n-orig">
         <div class="an-h">10-year Treasury yield tops 5%, its highest since 2007</div>
@@ -401,6 +421,7 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:18px 32px;align-items:center;justif
         </div>
         <div class="an-foot"><button type="button" class="pill-o" onclick="newsView('orig')">Original</button><span class="an-more">Read more →</span></div>
       </div>
+    </div>
     </div>
   </div>
 </section>
