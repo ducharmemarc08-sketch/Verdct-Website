@@ -18,6 +18,3 @@ Static landing page for Verdct — verdct.org
 
 Edit `index.html`, commit and push to GitHub — Vercel redeploys automatically.
 
-## When App Store link is ready
-
-In `index.html`, search for `https://apps.apple.com` and replace with your real App Store URL.
