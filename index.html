@@ -243,6 +243,20 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:18px 32px;align-items:center;justif
 @media(max-width:600px){.stage{padding:36px 14px 28px;min-height:0;border-radius:22px}.stage .ar,.stage .an{transform:none}}
 @media(prefers-reduced-motion:reduce){.hint{animation:none}}
 
+
+/* SIMPLIFY INTERACTIONS */
+.busy{position:relative;pointer-events:none;opacity:.85}
+.spin{display:inline-block;width:13px;height:13px;border:2px solid currentColor;border-right-color:transparent;border-radius:50%;animation:sp .7s linear infinite;vertical-align:-2px;margin-right:6px}
+@keyframes sp{to{transform:rotate(360deg)}}
+.shim{height:12px;border-radius:6px;margin:10px 0;background:linear-gradient(90deg,#ECEAE3 0%,#F7F5F0 50%,#ECEAE3 100%);background-size:200% 100%;animation:sh 1s linear infinite}
+@keyframes sh{to{background-position:-200% 0}}
+.stag>*{opacity:0;transform:translateY(8px);animation:inup .45s ease forwards}
+@keyframes inup{to{opacity:1;transform:none}}
+.pill-g:hover{background:#346F38}.btn-g:active,.pill-g:active,.pill-o:active{transform:scale(.97)}
+.sim-o.dim{opacity:.45;transition:opacity .3s}
+.link-btn{background:none;border:0;color:var(--g);font:600 13px 'Inter',sans-serif;cursor:pointer;margin-top:10px;padding:0}
+.hint.gone{opacity:0;transform:translateY(-6px);transition:all .3s;animation:none}
+
 /* LARGE SCREENS */
 @media(min-width:1200px){
   .wrap{max-width:1320px}
@@ -338,7 +352,8 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:18px 32px;align-items:center;justif
       <button type="button" class="btn btn-g" id="sim-btn" onclick="doSimplify()" style="padding:11px 20px;font-size:14px;margin-bottom:14px">
         <svg width="15" height="15" viewBox="0 0 24 24" fill="#fff" aria-hidden="true"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>Simplify
       </button>
-      <div class="sim-r" id="sim-r"><strong>In plain English:</strong> The Fed is leaning toward keeping interest rates higher for longer because inflation hasn't come down enough. That tends to weigh on growth stocks like tech.</div>
+      <div class="sim-r" id="sim-r"><strong>In plain English:</strong> <span id="sim-txt"></span></div>
+      <button type="button" class="link-btn" id="sim-back" style="display:none" onclick="resetSimplify()">← Show original</button>
     </div>
   </div>
 </section>
@@ -563,24 +578,65 @@ document.querySelectorAll('.rv').forEach(function(el){io.observe(el);});
   ob.observe(document.getElementById('score-card'));
 })();
 
+// Shared: fake "thinking" then reveal with stagger
+function shimmer(el){el.innerHTML='<div class="shim" style="width:92%"></div><div class="shim" style="width:78%"></div><div class="shim" style="width:85%"></div>';}
+function stagger(el){var kids=el.querySelectorAll('li, .wtm, p');kids.forEach(function(k,i){k.style.animationDelay=(i*0.12)+'s';});el.classList.remove('stag');void el.offsetWidth;el.classList.add('stag');}
+function hideHint(card){var st=card.closest('.stage');if(st){var h=st.querySelector('.hint');if(h)h.classList.add('gone');}}
+
 // Report toggle
+var repSimp=null;
 function setView(v){
+  var simp=document.getElementById('p-simp'),orig=document.getElementById('p-orig');
+  if(repSimp===null) repSimp=simp.innerHTML;
   var s=v==='simp';
-  document.getElementById('p-simp').classList.toggle('on',s);
-  document.getElementById('p-orig').classList.toggle('on',!s);
   document.getElementById('b-simp').classList.toggle('on',s);
   document.getElementById('b-orig').classList.toggle('on',!s);
+  var pill=document.querySelector('.pill-g');
+  hideHint(simp);
+  if(!s){simp.classList.remove('on');orig.classList.add('on');pill.innerHTML='+ Simplify';return;}
+  orig.classList.remove('on');simp.classList.add('on');
+  pill.innerHTML='<span class="spin"></span>Simplifying';pill.classList.add('busy');
+  shimmer(simp);
+  setTimeout(function(){simp.innerHTML=repSimp;stagger(simp);pill.innerHTML='✓ Simplified';pill.classList.remove('busy');},750);
 }
 
-// Simplify headline
+// News toggle
+var newsSimp=null;
 function newsView(v){
-  var s=v==='simp';
-  document.getElementById('n-simp').classList.toggle('on',s);
-  document.getElementById('n-orig').classList.toggle('on',!s);
+  var simp=document.getElementById('n-simp'),orig=document.getElementById('n-orig');
+  var inner=simp.querySelector('.an-in');
+  if(newsSimp===null) newsSimp=inner.innerHTML;
+  hideHint(simp);
+  if(v!=='simp'){simp.classList.remove('on');orig.classList.add('on');return;}
+  var btn=orig.querySelector('.pill-o');btn.innerHTML='<span class="spin"></span>Simplifying';btn.classList.add('busy');
+  setTimeout(function(){
+    orig.classList.remove('on');simp.classList.add('on');shimmer(inner);
+    btn.innerHTML='Simplify';btn.classList.remove('busy');
+    setTimeout(function(){inner.innerHTML=newsSimp;stagger(inner);},550);
+  },250);
 }
+
+// Headline Simplify: loading then typewriter
+var simText="The Fed is leaning toward keeping interest rates higher for longer because inflation hasn't come down enough. That tends to weigh on growth stocks like tech.";
+var typing=null;
 function doSimplify(){
-  document.getElementById('sim-r').classList.add('on');
-  document.getElementById('sim-btn').style.display='none';
+  var btn=document.getElementById('sim-btn'),r=document.getElementById('sim-r'),t=document.getElementById('sim-txt');
+  btn.innerHTML='<span class="spin"></span>Simplifying';btn.classList.add('busy');
+  document.querySelector('.sim-o').classList.add('dim');
+  setTimeout(function(){
+    btn.style.display='none';r.classList.add('on');t.textContent='';
+    var i=0;clearInterval(typing);
+    typing=setInterval(function(){t.textContent=simText.slice(0,++i);if(i>=simText.length){clearInterval(typing);document.getElementById('sim-back').style.display='inline-block';}},14);
+  },700);
+}
+function resetSimplify(){
+  clearInterval(typing);
+  var btn=document.getElementById('sim-btn');
+  document.getElementById('sim-r').classList.remove('on');
+  document.getElementById('sim-back').style.display='none';
+  document.querySelector('.sim-o').classList.remove('dim');
+  btn.classList.remove('busy');btn.style.display='inline-flex';
+  btn.innerHTML='<svg width="15" height="15" viewBox="0 0 24 24" fill="#fff" aria-hidden="true"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>Simplify';
 }
 </script>
 </body>
