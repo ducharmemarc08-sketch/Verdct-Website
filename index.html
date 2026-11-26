@@ -202,6 +202,14 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:18px 32px;align-items:center;justif
 .bl.or li::before{background:#D9822B}
 .bl.or li.risk{background:#FCE7D6;color:#8A3D0C}
 .bl.or li.risk::before{background:#C76A1C}
+.case-h{font-family:'JetBrains Mono',monospace;font-size:11.5px;font-weight:600;letter-spacing:1px;margin:14px 0 6px}
+.case-h.g{color:#3E8A43}.case-h.r{color:#C2372B}
+.cl{list-style:none;display:flex;flex-direction:column;gap:6px}
+.cl li{position:relative;padding-left:14px;font-size:13.5px;line-height:1.5;color:#3A3D3A}
+.cl li::before{content:"";position:absolute;left:0;top:8px;width:5px;height:5px;border-radius:50%}
+.cl.g li::before{background:#3E8A43}.cl.r li::before{background:#C2372B}
+.cl b{color:#141414}
+.wk{background:#F3F1EA;border-radius:12px;padding:12px 14px;margin-top:14px;font-size:13.5px;line-height:1.5}
 .ar-disc{font-size:11px;color:#8A8D88;margin-top:12px;line-height:1.4}
 /* APP-STYLE NEWS */
 .an{background:#FBF6EA;border:1px solid #F0E6D0;border-left:4px solid #D9822B;border-radius:20px;padding:20px 22px;box-shadow:0 24px 60px rgba(15,20,17,.08);max-width:500px;width:100%;margin:0 auto}
@@ -342,9 +350,9 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:18px 32px;align-items:center;justif
       <div class="step"><span>2</span>Read the research</div>
       <span class="label">Reports Simplified</span>
       <h2 class="h2">Analyst reports, <em>without the analyst-speak.</em></h2>
-      <p class="p">A real Verdct report on Apple. Tap Simplify and see in seconds why it says watch carefully.</p>
+      <p class="p">A real Verdct report: a bull case, a bear case and what's worth knowing. Tap Simplify and the risks jump out first.</p>
       <div class="fl">
-        <div class="fl-item"><div class="fl-ic"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></div><div><strong>One tap</strong><span>From research note to plain English instantly.</span></div></div>
+        <div class="fl-item"><div class="fl-ic"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></div><div><strong>Both sides of the story</strong><span>Every report has a bull case and a bear case.</span></div></div>
         <div class="fl-item"><div class="fl-ic"><svg viewBox="0 0 24 24"><path d="M10.3 3.9L1.8 18a2 2 0 001.7 3h17a2 2 0 001.7-3L13.7 3.9a2 2 0 00-3.4 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg></div><div><strong>Risks you can't miss</strong><span>The things that could hurt you are called out first.</span></div></div>
       </div>
     </div>
@@ -355,25 +363,36 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:18px 32px;align-items:center;justif
         <button type="button" id="b-orig" class="on" onclick="setView('orig')">Original</button>
         <button type="button" id="b-simp" onclick="setView('simp')">Simplified</button>
       </div>
-      <div class="ar-meta">ANALYST REPORT · SEP 23, 2026</div>
-      <div class="ar-co">Apple Inc.</div>
-      <div class="ar-tk">AAPL · NASDAQ · 337.62</div>
-      <div class="ar-row">
-        <div class="ar-pills"><span class="pill-r">Watch carefully</span><button type="button" class="pill-g" onclick="setView('simp')">+ Simplify</button></div>
-        <span class="ar-tgt">Target $325</span>
-      </div>
-      <div class="ar-up">−3.6% upside</div>
-      <div class="ar-h">iPhone demand softening while rivals push AI chips; regulatory headwinds building.</div>
+      <div class="ar-meta">ANALYST REPORT · JUL 11, 2025</div>
+      <div class="ar-row" style="margin:4px 0 0"><span class="ar-tk">HAPBF · OTC · $0.08</span><span class="ar-tgt">Penny stock</span></div>
+      <div class="ar-co" style="font-size:15px;margin-top:10px">Hapbee Technologies Inc.</div>
+      <div class="ar-h" style="font-size:18px">Fast-growing wellness wearable with a star-studded board, but still tiny and behind on filings.</div>
+      <div class="ar-pills" style="margin:4px 0 14px"><span class="pill-r">Watch with caution</span><button type="button" class="pill-g" onclick="setView('simp')">+ Simplify</button></div>
       <div class="vw on" id="p-orig">
-        <p class="ar-b">Apple faces a near-term demand headwind on iPhone 18 per Bank of America, while Qualcomm and Meta's AI agent initiatives threaten to erode its hardware premium. Regulatory scrutiny from a 42-state AG coalition on agent liability is a longer-term overhang. The stock is flat and lacks near-term catalysts; downside risk outweighs upside until demand stabilizes.</p>
+        <p class="ar-b">Hapbee makes a wearable that plays low-power electromagnetic signals it markets for focus, calm and sleep. Q1 2025 revenue jumped 191% while operating costs fell 62%. The company remains very small, has a history of late filings, and keeps issuing new shares to fund operations.</p>
+        <div class="case-h g">BULL CASE</div>
+        <ul class="cl g">
+          <li><b>Sales growth</b>: Q1 revenue up 191%; devices sold rose to 1,404 from 338 a year earlier.</li>
+          <li><b>Leaner costs</b>: operating expenses cut 62%, from $1.6M to $584K.</li>
+          <li><b>Insider money</b>: June's CDN$1.5M private placement was led by an executive.</li>
+        </ul>
+        <div class="case-h r">BEAR CASE</div>
+        <ul class="cl r">
+          <li><b>Filing problems</b>: 2024 audited results missed the April 30 deadline after an auditor change.</li>
+          <li><b>Dilution</b>: share sales in 2022, 2024 and 2025, plus new shares issued to pay suppliers.</li>
+          <li><b>Penny stock</b>: trades near 8¢, so small moves swing the price hard.</li>
+        </ul>
+        <div class="wk"><div class="ar-meta" style="margin-bottom:4px">WORTH KNOWING</div>Hapbee's next audited annual report, due April 30, 2026, is the key test.</div>
       </div>
       <div class="vw" id="p-simp">
         <div class="wtm">What this means for you</div>
         <ul class="bl">
-          <li class="risk">Bank of America expects iPhone 18 sales to be softer in the near term.</li>
-          <li class="risk">AI from rivals like Qualcomm and Meta could make Apple's devices feel less special.</li>
-          <li>42 state attorneys general are looking at AI liability, a legal risk further down the road.</li>
-          <li>The stock is flat with nothing big coming soon. The $325 target is about 3.6% below today's price.</li>
+          <li>Sales nearly tripled, and it cut its costs by more than half.</li>
+          <li>A company executive led a CA$1.5M investment in June.</li>
+          <li class="risk">It's a tiny company that keeps diluting its own shares, so each share you own is a smaller piece.</li>
+          <li class="risk">Its yearly report was delayed again, which can signal messy books and money trouble.</li>
+          <li class="risk">It's a penny stock, so the price can swing hard.</li>
+          <li>What to watch: its next yearly report, due April 30, 2026.</li>
         </ul>
       </div>
       <p class="ar-disc">For information only. Not investment advice or a recommendation to buy or sell any security.</p>
